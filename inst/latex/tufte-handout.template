@@ -1,10 +1,22 @@
 % tufte-handout.tex - DESC
 % Iago Mosqueira - JRC. 2013
 %
-\documentclass{tufte-handout}
+\documentclass[a4paper]{tufte-handout}
 
 % ams
 \usepackage{amssymb,amsmath}
+
+% Swedish language support
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel}
+
+% Section colors
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\color{red}\normalfont\Large\bfseries}
+{\color{red}\thesection}{1em}{}
 
 % Set up the images/graphics package
 \usepackage{graphicx}
@@ -41,12 +53,28 @@ $endif$
 \DefineShortVerb[commandchars=\\\{\}]{\|}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
 
-
-% multiplecol
-\usepackage{multicol}
-
 % lipsum
 \usepackage{lipsum}
+
+% border
+\definecolor{blocket_background}{HTML}{F8EDCD}
+\usepackage{eso-pic,xcolor,lipsum,calc}
+
+\newlength\myborder
+\myborder=10pt%please adjust the border width :-)
+
+
+\pagecolor{blocket_background}
+
+\AddToShipoutPictureBG
+{%
+    \AtPageLowerLeft
+    {%
+        \color{white}%
+    \hspace{\myborder}%
+    \rule[\myborder]{\paperwidth-2\myborder}{\paperheight-2\myborder}%
+  }%
+}
 
 % These commands are used to pretty-print LaTeX commands
 \newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
@@ -86,8 +114,12 @@ $if(date)$
 $endif$
 
 \begin{document}
+
 $if(title)$
 \maketitle
+%\begin{center}\noindent\rule{4cm}{0.4pt}\end{center}
+\tableofcontents
+%\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
 $endif$
 
 $body$
