@@ -3,6 +3,8 @@
 %
 \documentclass[a4paper]{tufte-handout}
 
+\usepackage{longtable}
+
 % ams
 \usepackage{amssymb,amsmath}
 
