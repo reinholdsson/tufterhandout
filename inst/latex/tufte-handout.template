@@ -78,6 +78,8 @@ $endif$
   }%
 }
 
+
+
 % These commands are used to pretty-print LaTeX commands
 \newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
 \newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
@@ -104,6 +106,13 @@ $endif$
 \newcommand{\RegionMarkerTok}[1]{{#1}}
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
 \newcommand{\NormalTok}[1]{{#1}}
+
+% Fix identity issue
+\makeatletter
+\newenvironment{identity}
+    {\endgroup\ignorespaces}
+    {\begingroup\def\@currenvir{identity}\ignorespacesafterend}
+\makeatother
 
 $if(title)$
 \title{$title$}
