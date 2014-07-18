@@ -3,7 +3,9 @@
 %
 \documentclass[a4paper]{tufte-handout}
 
+% tables
 \usepackage{longtable}
+\usepackage{ctable}
 
 % ams
 \usepackage{amssymb,amsmath}
